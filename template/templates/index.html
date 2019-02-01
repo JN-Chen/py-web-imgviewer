@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>humain capture</title>
+        <style type="text/css">
+            .flex_column {
+                display: flex;
+                display: -webkit-flex;
+                flex-direction: column;
+            }
+            .item {
+                align-items: center;
+                margin: 2em;
+            }
+            .flex_row {
+                display: flex;
+                display: -webkit-flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 100%;
+                height: auto;
+                align-items: center;
+            }
+            .line{
+                height: 2px;
+                background: #ababab;
+                flex: 1;
+            }
+        </style>
+    </head>
+    <body>
+        {% for date in date_list %}
+        <div class = "flex_column">
+            <div class = "flex_row">
+                <div>{{ date }}</div>
+                <div class = "line"></div>
+            </div>
+            <div class = "flex_row">
+                {% for name in img_name[date] %}
+                <div class = "flex_column item">
+                    <img style="padding-bottom: 1em;" src="{{ img_prefix }}/{{ date }}/{{ name }}" alt="img"></img>
+                    <div>{{ name }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </body>
+</html>
